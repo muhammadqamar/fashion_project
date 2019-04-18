@@ -1,0 +1,27 @@
+.relativeslider{
+
+}
+
+.relativecat{
+
+}
+.category-menu li>a{
+
+    border: 2px dashed #cccccc !important;
+    width:173px;
+    height:173px;
+    font-size:18px;
+    color:#fff;
+    font-weight: bold
+}
+.block-category-carousel{
+  background: none
+}
+.category-menu  .fa{
+    display:block;
+    font-size:65px;
+    padding-top:10px;
+}
+.category-menu  a{
+  padding-top:43px !important;
+}

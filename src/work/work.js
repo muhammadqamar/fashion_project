@@ -4,7 +4,7 @@ import $ from "jquery";
   import "slick-carousel/slick/slick.css";
   import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-router-dom';
 
-
+import './work.css';
 class work extends Component {
   componentDidMount()
   { $('.your-class').slick({ dots: false, infinite: true, speed: 500, fade: true, autoplay:true }); }
@@ -19,7 +19,7 @@ clickslider = ()=> {
     <div className="your-class">
         <div>
             <div className="row">
-                <div className="col-sm-5">
+                <div className="col-xs-5 mobile-collpase">
                     <div className="banner-text">
                         <div className="image">
                             <a className="banner-opacity" href="#"><img src="assets/images/11.jpg" alt="" /></a>
@@ -29,7 +29,7 @@ clickslider = ()=> {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-4">
+                <div className="col-xs-4  mobile-collpase">
                     <div className="banner-text style2">
                         <div className="image">
                             <a className="banner-opacity" href="#"><img src="assets/images/12.jpg" alt="" /></a>
@@ -39,7 +39,7 @@ clickslider = ()=> {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-3">
+                <div className="col-xs-3  mobile-collpase">
                     <div className="banner-text style2">
                         <div className="image">
                             <a className="banner-opacity" href="#"><img src="assets/images/13.jpg" alt="" /></a>
@@ -61,93 +61,95 @@ clickslider = ()=> {
             </div>
         </div>
         <div>
-        <div className="row">
+            <div className="row">
 
-            <div className="col-sm-4">
-                <div className="banner-text style2">
-                    <div className="image">
-                        <a className="banner-opacity" href="#"><img src="assets/images/12.jpg" alt="" /></a>
-                    </div>
-                    <div className="content-text">
-                        <h3 className="title">MENSWEAR</h3>
-                    </div>
-                </div>
-            </div>
-            <div className="col-sm-5">
-                <div className="banner-text">
-                    <div className="image">
-                        <a className="banner-opacity" href="#"><img src="assets/images/11.jpg" alt="" /></a>
-                    </div>
-                    <div className="content-text">
-                        <h3 className="title">SHIRT</h3>
+                <div className="col-xs-4  mobile-collpase">
+                    <div className="banner-text style2">
+                        <div className="image">
+                            <a className="banner-opacity" href="#"><img src="assets/images/sl2.jpg" alt="" /></a>
+                        </div>
+                        <div className="content-text">
+                            <h3 className="title">MENSWEAR</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="col-sm-3">
-                <div className="banner-text style2">
-                    <div className="image">
-                        <a className="banner-opacity" href="#"><img src="assets/images/13.jpg" alt="" /></a>
+                <div className="col-xs-3  mobile-collpase">
+                    <div className="banner-text style2">
+                        <div className="image">
+                            <a className="banner-opacity" href="#"><img src="assets/images/sl3.jpg" alt="" /></a>
+                        </div>
+                        <div className="content-text">
+                            <h3 className="title">HANDBAG</h3>
+                        </div>
                     </div>
-                    <div className="content-text">
-                        <h3 className="title">HANDBAG</h3>
+                    <div className="banner-text style2">
+                        <div className="image ">
+                            <a className="banner-opacity" href="#"><img src="assets/images/sl4.jpg" alt="" /></a>
+                        </div>
+                        <div className="content-text">
+                            <h3 className="title">SNEAKERS</h3>
+                        </div>
                     </div>
                 </div>
-                <div className="banner-text style2">
-                    <div className="image ">
-                        <a className="banner-opacity" href="#"><img src="assets/images/14.jpg" alt="" /></a>
-                    </div>
-                    <div className="content-text">
-                        <h3 className="title">SNEAKERS</h3>
+                <div className="col-xs-5 mobile-collpase">
+                    <div className="banner-text">
+                        <div className="image">
+                            <a className="banner-opacity" href="#"><img src="assets/images/sl1.jpg" alt="" /></a>
+                        </div>
+                        <div className="content-text">
+                            <h3 className="title">SHIRT</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+
+            </div>
         </div>
         <div>
-        <div className="row">
-            <div className="col-sm-5">
-                <div className="banner-text">
-                    <div className="image">
-                        <a className="banner-opacity" href="#"><img src="assets/images/11.jpg" alt="" /></a>
-                    </div>
-                    <div className="content-text">
-                        <h3 className="title">SHIRT</h3>
-                    </div>
-                </div>
-            </div>
-            <div className="col-sm-3">
-                <div className="banner-text style2">
-                    <div className="image">
-                        <a className="banner-opacity" href="#"><img src="assets/images/13.jpg" alt="" /></a>
-                    </div>
-                    <div className="content-text">
-                        <h3 className="title">HANDBAG</h3>
-                    </div>
-                </div>
-                <div className="banner-text style2">
-                    <div className="image ">
-                        <a className="banner-opacity" href="#"><img src="assets/images/14.jpg" alt="" /></a>
-                    </div>
-                    <div className="content-text">
-                        <h3 className="title">SNEAKERS</h3>
-                    </div>
-                </div>
-            </div>
-            <div className="col-sm-4">
-                <div className="banner-text style2">
-                    <div className="image">
-                        <a className="banner-opacity" href="#"><img src="assets/images/12.jpg" alt="" /></a>
-                    </div>
-                    <div className="content-text">
-                        <h3 className="title">MENSWEAR</h3>
-                    </div>
-                </div>
-            </div>
+            <div className="row">
 
+                <div className="col-xs-4  mobile-collpase">
+                    <div className="banner-text style2">
+                        <div className="image">
+                            <a className="banner-opacity" href="#"><img src="assets/images/sl2.jpg" alt="" /></a>
+                        </div>
+                        <div className="content-text">
+                            <h3 className="title">MENSWEAR</h3>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-xs-5 mobile-collpase">
+                    <div className="banner-text">
+                        <div className="image">
+                            <a className="banner-opacity" href="#"><img src="assets/images/sl1.jpg" alt="" /></a>
+                        </div>
+                        <div className="content-text">
+                            <h3 className="title">SHIRT</h3>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-xs-3  mobile-collpase">
+                    <div className="banner-text style2">
+                        <div className="image">
+                            <a className="banner-opacity" href="#"><img src="assets/images/sl6.png" alt="" /></a>
+                        </div>
+                        <div className="content-text">
+                            <h3 className="title">HANDBAG</h3>
+                        </div>
+                    </div>
+                    <div className="banner-text style2">
+                        <div className="image ">
+                            <a className="banner-opacity" href="#"><img src="assets/images/sl5.png" alt="" /></a>
+                        </div>
+                        <div className="content-text">
+                            <h3 className="title">SNEAKERS</h3>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
         </div>
-        </div>
+
     </div>
     <div className="row">
     <NavLink to="/checkout" exact strict >

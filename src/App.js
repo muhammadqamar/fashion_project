@@ -8,6 +8,9 @@ import Work from './work/work';
 import Party from './party/party.js';
 import Weekend from './weekend/weekend';
 import Checkout from './checkout/checkout';
+import Inputmodel from './modelinput/modelinput';
+import Payment from './payment/payment';
+
 import $ from "jquery";
 class App extends Component {
   render() {
@@ -118,7 +121,7 @@ class App extends Component {
            return (
 
                 <div className="img-responsive-1 " >
-          
+
 
 
 
@@ -135,7 +138,7 @@ class App extends Component {
 
          <Route path="/weekend" exact strict component={Weekend}/>
          <Route path="/checkout" exact strict component={Checkout}/>
-
+         <Route path="/payment" exact strict component={Payment}/>
 
 
           </Switch>

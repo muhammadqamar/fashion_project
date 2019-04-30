@@ -84,9 +84,11 @@ class checkout extends Component {
                                       <td><span className="price">£320.00</span></td>
                                   </tr>
                               </tbody></table>
-                              <button className="button medium">UPDATE CART</button>
+                              <NavLink to="/payment" exact strict >
                               <button className="button btn-primary medium checkout-button">PROCEED TO CHECKOUT</button>
-                          </div>
+
+                                  </NavLink>
+                            </div>
                       </div>
 
                   </div>

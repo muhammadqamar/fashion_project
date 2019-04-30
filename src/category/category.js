@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Inputmodel from '../modelinput/modelinput';
 import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-router-dom';
 
 
@@ -14,29 +15,32 @@ class category extends Component {
       <ul className="category-menu">
             <li>
 
-          <NavLink to="/party" exact strict >
+          <NavLink data-toggle="modal" data-target="#myModal" >
+                  Party Outfiy
 
-              Party Outfit
-                <i className="fa fa-black-tie" aria-hidden="true"></i>
+    <img src="assets/images/002-gift.png" />
               </NavLink>
             </li>
             <li>
-                <NavLink to="/weekend" exact strict >
+                <NavLink data-toggle="modal" data-target="#myModal" >
 
               Weekend Outfit
-              <i className="fa fa-shirtsinbulk" aria-hidden="true"></i>
+
+                <img src="assets/images/001-sunday-daily-calendar-page.png" />
             </NavLink>
             </li>
             <li>
-                <NavLink to="/work" exact strict >
+            <NavLink data-toggle="modal" data-target="#myModal" >
 
               Work Outfit
-              <i className="fa fa-briefcase" aria-hidden="true"></i>
+                <img src="assets/images/portfolio.png" />
             </NavLink>
             </li>
 
 
-          </ul></div>
+          </ul>
+<Inputmodel></Inputmodel>
+          </div>
 
     );
 

@@ -7,14 +7,29 @@ import $ from "jquery";
 import './work.css';
 class work extends Component {
   componentDidMount()
-  { $('.your-class').slick({ dots: false, infinite: true, speed: 500, fade: true, autoplay:true }); }
+  { $('.your-class').slick({ dots: false, infinite: true, speed: 500, fade: true, autoplay:true });
+
+fetch("https://search-api.swiftype.com/api/v1/public/engines/search.json?engine_key=fSPw6wk-GVaeu9fz5sUU&q=red").then(x=>x.json().then(b=>{
+
+  for(var x =0;x<b.records.page.length;x++){
+    console.log(b.records.page[x].image)
+  }
+  document.getElementsByClassName('loader')[0].style.display="none"
+
+}))
+}
 
 clickslider = ()=> {
   document.getElementsByClassName('slick-prev')[0].click()
 }
+
+
+
+
    render() {
      return (
-
+<div>
+<div className="loader">MATCHING..</div>
 <div className="your-class1">
     <div className="your-class">
         <div>
@@ -170,7 +185,7 @@ clickslider = ()=> {
         </div>
 
     </div>
-
+</div>
 </div>);
 
 } } export default work;

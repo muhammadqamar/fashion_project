@@ -1,7 +1,41 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-router-dom';
-
+import Modelcon from '../work/work';
 class modelinput extends Component {
+
+state = {
+check:{
+  top_size:0,
+  paint_size:0,
+  shoes_size:0,
+  color_choice:"",
+}
+
+
+}
+
+ settop(event){
+this.setState({
+check:{top_size:event.target.value}
+})
+}
+
+setpaint(event){
+this.setState({
+check:{paint_size:event.target.value}
+})
+}
+
+setshoes(event){
+this.setState({
+check:{shoes_size:event.target.value}
+})
+}
+setcolor(event){
+this.setState({
+check:{color_choice:event.target.value}
+})
+}
 
   render() {
     return (
@@ -24,13 +58,14 @@ class modelinput extends Component {
                  </div>
                  <form className="form-subscribe">
                      <p className="notice">enter size of   <span className="primary">your top</span></p>
-                 <input className="input"  type="number" />
+                 <input className="input" value={this.state.top_size} onChange={this.settop.bind(this)}   type="number" />
                  <p className="notice">enter size of   <span className="primary">your paints</span></p>
-             <input className="input"  type="number" />
+             <input className="input" value={this.state.paint_size} onChange={this.setpaint.bind(this)}  type="number" />
              <p className="notice">enter size of   <span className="primary">your shoes</span></p>
-         <input className="input"  type="number" />
+         <input className="input"  value={this.state.shoes_size} onChange={this.setshoes.bind(this)} type="number" />
          <p className="notice">select shade of   <span className="primary">your color</span></p>
-     <input className="input"  type="color" />
+     <input className="input" value={this.state.color_choice} onChange={this.setcolor.bind(this)}  type="color" />
+
      <NavLink to="/work" exact strict >
      <div class="element-icon style2"><div class="icon"><i class="flaticon flaticon-origami28"></i></div><div class="content"><h4 class="title">Submit</h4></div></div>
    </NavLink>

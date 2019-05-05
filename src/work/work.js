@@ -166,8 +166,9 @@ for(var x=0;x<5;x++){
 //  sliderarray.push(paints[Math.floor(Math.random()*10)])
 
 
-
-var rand_nu = Math.floor(Math.random()*10)
+var min = 0;
+var max = shoes.length -1
+var rand_nu = Math.floor(Math.random() * (max - min + 1)) + min;
 sliderarray.push(
    <div className="row">
 
@@ -214,7 +215,7 @@ sliderarray.push(
       </div>
 )
 
-var rand_nu = Math.floor(Math.random()*10)
+var rand_nu = Math.floor(Math.random() * (max - min + 1)) + min;
 sliderarray.push(
    <div className="row">
    <div className="col-xs-4 col2  mobile-collpase">
@@ -261,7 +262,7 @@ sliderarray.push(
       </div>
 )
 
-var rand_nu = Math.floor(Math.random()*10)
+var rand_nu = Math.floor(Math.random() * (max - min + 1)) + min;
 sliderarray.push(
    <div className="row">
 

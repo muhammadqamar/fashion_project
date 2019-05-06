@@ -27,6 +27,7 @@ return  new Promise((resolve,reject)=>{
 
     for(var x =0;x<b.records.page.length;x++){
       var price="NA"
+      try{
       var description = b.records.page[x].description
       var check = description.split(',')[description.split(',').length-1].split(':')[1]
       var check_prize = description.split(',')[description.split(',').length-1]
@@ -38,6 +39,7 @@ return  new Promise((resolve,reject)=>{
       else{
         price = "NA"
       }
+        }catch(e){}
       var dummy = {
         img:b.records.page[x].image,
         price:price
@@ -57,6 +59,7 @@ fetch("https://search-api.swiftype.com/api/v1/public/engines/search.json?engine_
 
   for(var x =0;x<b.records.page.length;x++){
     var price="NA"
+    try{
     var description = b.records.page[x].description
     var check = description.split(',')[description.split(',').length-1].split(':')[1]
     var check_prize = description.split(',')[description.split(',').length-1]
@@ -68,6 +71,7 @@ fetch("https://search-api.swiftype.com/api/v1/public/engines/search.json?engine_
     else{
       price = "NA"
     }
+  }catch(e){}
     var dummy = {
       img:b.records.page[x].image,
       price:price
@@ -116,6 +120,7 @@ var promisefour =()=>{
 
     for(var x =0;x<b.records.page.length;x++){
       var price="NA"
+      try{
       var description = b.records.page[x].description
       var check = description.split(',')[description.split(',').length-1].split(':')[1]
       var check_prize = description.split(',')[description.split(',').length-1]
@@ -127,6 +132,7 @@ var promisefour =()=>{
       else{
         price = "NA"
       }
+        }catch(e){}
       var dummy = {
         img:b.records.page[x].image,
         price:price

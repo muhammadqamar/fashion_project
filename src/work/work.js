@@ -23,7 +23,7 @@ class work extends Component {
   var sliderarray = []
 var promisefirst = ()=>{
 return  new Promise((resolve,reject)=>{
-  fetch("https://search-api.swiftype.com/api/v1/public/engines/search.json?engine_key=fSPw6wk-GVaeu9fz5sUU&q=jeans").then(x=>x.json().then(b=>{
+  fetch("https://search-api.swiftype.com/api/v1/public/engines/search.json?engine_key=fSPw6wk-GVaeu9fz5sUU&q=Ladies jeans").then(x=>x.json().then(b=>{
 
     for(var x =0;x<b.records.page.length;x++){
       var price="NA"
@@ -44,7 +44,9 @@ return  new Promise((resolve,reject)=>{
         img:b.records.page[x].image,
         price:price
       }
+      if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
     paints.push(dummy)
+  }
     }
     //document.getElementsByClassName('loader')[0].style.display="none"
     resolve()
@@ -55,7 +57,7 @@ return  new Promise((resolve,reject)=>{
 var promisesecond = ()=>{
   return new Promise((resolve,reject)=>{
 
-fetch("https://search-api.swiftype.com/api/v1/public/engines/search.json?engine_key=fSPw6wk-GVaeu9fz5sUU&q=shirt").then(x=>x.json().then(b=>{
+fetch("https://search-api.swiftype.com/api/v1/public/engines/search.json?engine_key=fSPw6wk-GVaeu9fz5sUU&q= Ladies shirt").then(x=>x.json().then(b=>{
 
   for(var x =0;x<b.records.page.length;x++){
     var price="NA"
@@ -76,7 +78,9 @@ fetch("https://search-api.swiftype.com/api/v1/public/engines/search.json?engine_
       img:b.records.page[x].image,
       price:price
     }
+  if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
   shirts.push(dummy)
+}
   }
   //document.getElementsByClassName('loader')[0].style.display="none"
     resolve()
@@ -105,7 +109,10 @@ return new Promise((resolve,reject)=>{
         img:b.records.page[x].image,
         price:price
       }
+
+    if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
     shoes.push(dummy)
+  }
     }
   //  document.getElementsByClassName('loader')[0].style.display="none"
   resolve()
@@ -137,7 +144,9 @@ var promisefour =()=>{
         img:b.records.page[x].image,
         price:price
       }
+    if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
     bags.push(dummy)
+  }
     }
 
   resolve()
@@ -165,7 +174,7 @@ Promise.all([promisefirst(),promisesecond(),promisethird(),promisefour()]).then(
     console.log(shirts)
 console.log(shoes)
     console.log(bags)
-for(var x=0;x<5;x++){
+for(var x=0;x<8;x++){
 //  sliderarray.push(shoes[Math.floor(Math.random()*10)])
 //  sliderarray.push(bags[Math.floor(Math.random()*10)])
 //  sliderarray.push(shirts[Math.floor(Math.random()*10)])
@@ -173,12 +182,15 @@ for(var x=0;x<5;x++){
 
 
 var min = 0;
-var max = shoes.length -1
+var max = Math.min(shoes.length,paints.length,bags.length,shoes.length)-1
+if(max<0){
+  alert('no querries result found')
+}
 var rand_nu = Math.floor(Math.random() * (max - min + 1)) + min;
 sliderarray.push(
-   <div className="row">
+   <div className="">
 
-      <div className="col-xs-4  mobile-collpase">
+      <div className="col-xs-6 col-sm-3  mobile-collpase">
           <div className="banner-text style2">
               <div className="image">
 
@@ -189,7 +201,7 @@ sliderarray.push(
               </div>
           </div>
       </div>
-      <div className="col-xs-4 col2  mobile-collpase">
+      <div className="col-xs-6 col-sm-3   mobile-collpase">
           <div className="banner-text style2">
               <div className="image">
                   <a className="banner-opacity" href="#"><img src={shoes[rand_nu].img} alt="" /></a>
@@ -198,17 +210,20 @@ sliderarray.push(
                   <h3 className="title">{shoes[rand_nu].price}</h3>
               </div>
           </div>
-          <div className="banner-text style2">
-              <div className="image ">
-                  <a className="banner-opacity" href="#"><img src={bags[rand_nu].img} alt="" /></a>
-              </div>
-              <div className="content-text">
-                  <h3 className="title">{bags[rand_nu].price}</h3>
-              </div>
+
+      </div>
+     <div className="col-xs-6 col-sm-3   mobile-collpase">
+      <div className="banner-text style2">
+          <div className="image ">
+              <a className="banner-opacity" href="#"><img src={bags[rand_nu].img} alt="" /></a>
+          </div>
+          <div className="content-text">
+              <h3 className="title">{bags[rand_nu].price}</h3>
           </div>
       </div>
-      <div className="col-xs-4 mobile-collpase">
-          <div className="banner-text">
+      </div>
+      <div className=" col-xs-6 col-sm-3 mobile-collpase">
+          <div className="banner-text style2">
               <div className="image">
                   <a className="banner-opacity" href="#"><img src={shirts[rand_nu].img} alt="" /></a>
               </div>
@@ -223,97 +238,104 @@ sliderarray.push(
 
 var rand_nu = Math.floor(Math.random() * (max - min + 1)) + min;
 sliderarray.push(
-   <div className="row">
-   <div className="col-xs-4 col2  mobile-collpase">
-       <div className="banner-text style2">
-           <div className="image">
-               <a className="banner-opacity" href="#"><img src={shoes[rand_nu].img} alt="" /></a>
-           </div>
-           <div className="content-text">
-               <h3 className="title">{shoes[rand_nu].price}</h3>
-           </div>
-       </div>
-       <div className="banner-text style2">
-           <div className="image ">
-               <a className="banner-opacity" href="#"><img src={bags[rand_nu].img} alt="" /></a>
-           </div>
-           <div className="content-text">
-               <h3 className="title">{bags[rand_nu].price}</h3>
-           </div>
-       </div>
-   </div>
-      <div className="col-xs-4  mobile-collpase">
-          <div className="banner-text style2">
-              <div className="image">
+  <div className="">
 
-                  <a className="banner-opacity" href="#"><img src={paints[rand_nu].img} alt="" /></a>
-              </div>
-              <div className="content-text">
-                  <h3 className="title">{paints[rand_nu].price}</h3>
-              </div>
-          </div>
-      </div>
 
-      <div className="col-xs-4 mobile-collpase">
-          <div className="banner-text">
-              <div className="image">
-                  <a className="banner-opacity" href="#"><img src={shirts[rand_nu].img} alt="" /></a>
-              </div>
-              <div className="content-text">
-                  <h3 className="title">{shirts[rand_nu].price}</h3>
-              </div>
-          </div>
-      </div>
+     <div className="col-xs-6 col-sm-3   mobile-collpase">
+         <div className="banner-text style2">
+             <div className="image">
+                 <a className="banner-opacity" href="#"><img src={shoes[rand_nu].img} alt="" /></a>
+             </div>
+             <div className="content-text">
+                 <h3 className="title">{shoes[rand_nu].price}</h3>
+             </div>
+         </div>
 
-      </div>
+     </div>
+     <div className="col-xs-6 col-sm-3  mobile-collpase">
+         <div className="banner-text style2">
+             <div className="image">
+
+                 <a className="banner-opacity" href="#"><img src={paints[rand_nu].img} alt="" /></a>
+             </div>
+             <div className="content-text">
+                 <h3 className="title">{paints[rand_nu].price}</h3>
+             </div>
+         </div>
+     </div>
+    <div className="col-xs-6 col-sm-3   mobile-collpase">
+     <div className="banner-text style2">
+         <div className="image ">
+             <a className="banner-opacity" href="#"><img src={bags[rand_nu].img} alt="" /></a>
+         </div>
+         <div className="content-text">
+             <h3 className="title">{bags[rand_nu].price}</h3>
+         </div>
+     </div>
+     </div>
+     <div className=" col-xs-6 col-sm-3 mobile-collpase">
+         <div className="banner-text style2">
+             <div className="image">
+                 <a className="banner-opacity" href="#"><img src={shirts[rand_nu].img} alt="" /></a>
+             </div>
+             <div className="content-text">
+                 <h3 className="title">{shirts[rand_nu].price}</h3>
+             </div>
+         </div>
+     </div>
+
+     </div>
 )
 
 var rand_nu = Math.floor(Math.random() * (max - min + 1)) + min;
 sliderarray.push(
-   <div className="row">
+  <div className="">
 
-      <div className="col-xs-4  mobile-collpase">
-          <div className="banner-text style2">
-              <div className="image">
+     <div className="col-xs-6 col-sm-3  mobile-collpase">
+         <div className="banner-text style2">
+             <div className="image">
 
-                  <a className="banner-opacity" href="#"><img src={paints[rand_nu].img} alt="" /></a>
-              </div>
-              <div className="content-text">
-                  <h3 className="title">{paints[rand_nu].price}</h3>
-              </div>
-          </div>
-      </div>
+                 <a className="banner-opacity" href="#"><img src={paints[rand_nu].img} alt="" /></a>
+             </div>
+             <div className="content-text">
+                 <h3 className="title">{paints[rand_nu].price}</h3>
+             </div>
+         </div>
+     </div>
+     <div className="col-xs-6 col-sm-3   mobile-collpase">
+         <div className="banner-text style2">
+             <div className="image">
+                 <a className="banner-opacity" href="#"><img src={shoes[rand_nu].img} alt="" /></a>
+             </div>
+             <div className="content-text">
+                 <h3 className="title">{shoes[rand_nu].price}</h3>
+             </div>
+         </div>
 
-      <div className="col-xs-4 mobile-collpase">
-          <div className="banner-text">
-              <div className="image">
-                  <a className="banner-opacity" href="#"><img src={shirts[rand_nu].img} alt="" /></a>
-              </div>
-              <div className="content-text">
-                  <h3 className="title">{shirts[rand_nu].price}</h3>
-              </div>
-          </div>
-      </div>
-      <div className="col-xs-4 col2  mobile-collpase">
-          <div className="banner-text style2">
-              <div className="image">
-                  <a className="banner-opacity" href="#"><img src={shoes[rand_nu].img} alt="" /></a>
-              </div>
-              <div className="content-text">
-                  <h3 className="title">{shoes[rand_nu].price}</h3>
-              </div>
-          </div>
-          <div className="banner-text style2">
-              <div className="image ">
-                  <a className="banner-opacity" href="#"><img src={bags[rand_nu].img} alt="" /></a>
-              </div>
-              <div className="content-text">
-                  <h3 className="title">{bags[rand_nu].price}</h3>
-              </div>
-          </div>
-      </div>
+     </div>
+     <div className=" col-xs-6 col-sm-3 mobile-collpase">
+         <div className="banner-text style2">
+             <div className="image">
+                 <a className="banner-opacity" href="#"><img src={shirts[rand_nu].img} alt="" /></a>
+             </div>
+             <div className="content-text">
+                 <h3 className="title">{shirts[rand_nu].price}</h3>
+             </div>
+         </div>
+     </div>
+    <div className="col-xs-6 col-sm-3   mobile-collpase">
+     <div className="banner-text style2">
+         <div className="image ">
+             <a className="banner-opacity" href="#"><img src={bags[rand_nu].img} alt="" /></a>
+         </div>
+         <div className="content-text">
+             <h3 className="title">{bags[rand_nu].price}</h3>
+         </div>
+     </div>
+     </div>
 
-      </div>
+
+     </div>
 )
 
 
@@ -329,7 +351,7 @@ this.setState({
 }
 )
 console.log(sliderarray)
-$('.your-class').slick({ dots: false, infinite: true, speed: 500, fade: true, autoplay:true });
+$('.your-class').slick({ dots: false, infinite: true, speed: 500, fade: true, autoplay:false });
 
 })
 

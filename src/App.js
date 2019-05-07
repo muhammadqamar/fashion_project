@@ -28,7 +28,7 @@ class App extends Component {
       	<span className="open-header-sidebar"><i className="fa fa-angle-double-right"></i></span>
       	<div className="header-top sidebar-menu">
       		<div className="logo">
-      			<NavLink to="/" exact strict ><img src="assets/images/slides/logo_w.png" alt=""></img></NavLink>
+      			<NavLink to="/" exact strict ><div class="logo-sider">JENNY FASHION</div></NavLink>
       		</div>
       		<ul className="boutique-nav main-menu menu-sidebar">
       			<li className="active menu-item-has-children">
@@ -113,7 +113,9 @@ class App extends Component {
       	</div>
       </header>
       <div id="mian-swtich" className="height-set-width">
-        <img src="assets/images/slides/logo.png" className="main-logo" alt=""></img>
+
+        <NavLink to="/" exact strict ><div class="logo-sider-black main-logo">JENNY FASHION</div></NavLink>
+
         <Switch>
 
        <Route path="/" exact strict render={

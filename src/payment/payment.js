@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-router-dom';
 
 class payment extends Component {
+  componentDidMount(){
+
+    document.getElementById('textchange').style.color = "black"
+
+  }
   render() {
     return (
       <div className="row payments">

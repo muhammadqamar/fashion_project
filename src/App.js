@@ -13,6 +13,14 @@ import Payment from './payment/payment';
 
 import $ from "jquery";
 class App extends Component {
+  state={
+    color_t : 'white'
+  }
+  componentDidMount(){
+
+    document.getElementById('textchange').style.color = "white"
+
+  }
   render() {
     return (
      <BrowserRouter>
@@ -108,13 +116,13 @@ class App extends Component {
       	        <a href="#"><i className="fa fa-pinterest"></i></a>
       	    </div>
       	    <div className="sidebar-footer">
-      	        <div className="coppyright">2019 XiXi Fashion. ALL RIGHTS RESERVED</div>
+      	        <div className="coppyright">2019 JENNY Fashion. ALL RIGHTS RESERVED</div>
       		</div>
       	</div>
       </header>
       <div id="mian-swtich" className="height-set-width">
 
-        <NavLink to="/" exact strict ><div class="logo-sider-black main-logo">JENNY FASHION</div></NavLink>
+        <NavLink to="/" exact strict ><div  id ="textchange" ref={(inp)=>this.textchsange = inp} class="logo-sider-black main-logo">JENNY FASHION</div></NavLink>
 
         <Switch>
 
@@ -127,7 +135,7 @@ class App extends Component {
 
 
 
-             <Category  />
+             <Category  pathc={this.state.color_t} />
 
              </div>
 

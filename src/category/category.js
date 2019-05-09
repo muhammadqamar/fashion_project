@@ -5,10 +5,16 @@ import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-r
 
 
 class category extends Component {
+  componentDidMount(){
+
+    //document.getElementById('textchange').style.color = "white"
+    console.dir(this.fi)
+    //  this.fi.style.color= "white"
+  }
   render() {
     return (
 
-      <div className="relativecat">
+      <div className="relativecat" ref={(inp)=>{this.fi = inp}} ok={this.props.pathc}>
       <div className="block-category-carousel">
       <h2 className="title">what's your mood Today ?</h2>
       </div>
@@ -16,7 +22,7 @@ class category extends Component {
             <li>
 
           <NavLink data-toggle="modal" data-target="#myModal" >
-                  Party Outfiy
+                  Party Outfit
 
     <img src="assets/images/002-gift.png" />
               </NavLink>

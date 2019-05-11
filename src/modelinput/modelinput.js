@@ -47,14 +47,13 @@ check:{color_choice:event.target.value}
             <div className="modal-content">
               <div className="modal-header">
 
-                <h4 className="modal-title">Enter your Measuremnts</h4>
+                <h4 className="modal-title">Enter your Measurements</h4>
               </div>
               <div className="modal-body">
               <div className="kt-popup-newsletter">
                  <div className="popup-title">
 
-                    <img src="./assets/images/slides/logo.png" alt="" />
-
+              <div  class="logo-sider-black1 ">JENNY FASHION</div>
                  </div>
                  <form className="form-subscribe">
                      <p className="notice">enter size of   <span className="primary">your top</span></p>

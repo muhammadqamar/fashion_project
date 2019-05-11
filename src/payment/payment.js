@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-router-dom';
-
+import { connect } from "react-redux";
 class payment extends Component {
   componentDidMount(){
 
-    document.getElementById('textchange').style.color = "black"
+
 
   }
   render() {
@@ -129,5 +129,13 @@ class payment extends Component {
   }
 }
 
+const mapDispachToProps = (dispatch) => {
+  dispatch({ type: "update_logo",value:'color_logo_class_black'})
 
-export default payment;
+
+};
+export default connect("",
+
+  mapDispachToProps
+
+)(payment);

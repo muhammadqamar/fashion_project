@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import $ from "jquery";
- import slick from "slick-carousel";
-  import "slick-carousel/slick/slick.css";
-  import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-router-dom';
-
+import slick from "slick-carousel";
+import "slick-carousel/slick/slick.css";
+import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-router-dom';
+import { connect } from "react-redux";
 import './work.css';
+import Swal from 'sweetalert2'
+var dummyjson=[]
 class work extends Component {
-
-  state = {
+state = {
 
     sli:""
   }
-
-  componentDidMount()
+componentDidMount()
   {
-
-      document.getElementById('textchange').style.color = "black"
-
 
 
       document.getElementsByClassName('loader')[0].style.display="block"
@@ -45,7 +42,7 @@ return  new Promise((resolve,reject)=>{
 
       if (check_prize.includes('Price'))
       {
-        price = "$ "+check
+        price = "US $ "+check
       }
       else{
         price = "NA"
@@ -53,7 +50,9 @@ return  new Promise((resolve,reject)=>{
         }catch(e){}
       var dummy = {
         img:b.records.page[x].image,
-        price:price
+        price:price,
+
+        description:description
       }
       if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
     jeans.push(dummy)
@@ -79,7 +78,7 @@ fetch("https://search-api.swiftype.com/api/v1/public/engines/search.json?engine_
 
     if (check_prize.includes('Price'))
     {
-      price = "$ "+check
+      price = "US $ "+check
     }
     else{
       price = "NA"
@@ -87,7 +86,8 @@ fetch("https://search-api.swiftype.com/api/v1/public/engines/search.json?engine_
   }catch(e){}
     var dummy = {
       img:b.records.page[x].image,
-      price:price
+      price:price,
+description:description
     }
   if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
   shirts.push(dummy)
@@ -111,14 +111,15 @@ return new Promise((resolve,reject)=>{
 
       if (check_prize.includes('Price'))
       {
-        price = "$ "+check
+        price = "US $ "+check
       }
       else{
         price = "NA"
       }
       var dummy = {
         img:b.records.page[x].image,
-        price:price
+        price:price,
+description:description
       }
 
     if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
@@ -145,7 +146,7 @@ var promisefour =()=>{
 
       if (check_prize.includes('Price'))
       {
-        price = "$ "+check
+        price = "US $ "+check
       }
       else{
         price = "NA"
@@ -153,7 +154,8 @@ var promisefour =()=>{
         }catch(e){}
       var dummy = {
         img:b.records.page[x].image,
-        price:price
+        price:price,
+description:description
       }
     if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
     bags.push(dummy)
@@ -179,7 +181,7 @@ var promisefive =()=>{
 
       if (check_prize.includes('Price'))
       {
-        price = "$ "+check
+        price = "US $ "+check
       }
       else{
         price = "NA"
@@ -187,7 +189,8 @@ var promisefive =()=>{
         }catch(e){}
       var dummy = {
         img:b.records.page[x].image,
-        price:price
+        price:price,
+description:description
       }
     if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
     tops.push(dummy)
@@ -213,7 +216,7 @@ var promisesix =()=>{
 
       if (check_prize.includes('Price'))
       {
-        price = "$ "+check
+        price = "US $ "+check
       }
       else{
         price = "NA"
@@ -221,7 +224,8 @@ var promisesix =()=>{
         }catch(e){}
       var dummy = {
         img:b.records.page[x].image,
-        price:price
+        price:price,
+description:description
       }
     if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
     skirts.push(dummy)
@@ -247,7 +251,7 @@ var promiseseven =()=>{
 
       if (check_prize.includes('Price'))
       {
-        price = "$ "+check
+        price = "US $ "+check
       }
       else{
         price = "NA"
@@ -255,7 +259,8 @@ var promiseseven =()=>{
         }catch(e){}
       var dummy = {
         img:b.records.page[x].image,
-        price:price
+        price:price,
+description:description
       }
     if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
     handbags.push(dummy)
@@ -281,7 +286,7 @@ var promiseeight =()=>{
 
       if (check_prize.includes('Price'))
       {
-        price = "$ "+check
+        price = "US $ "+check
       }
       else{
         price = "NA"
@@ -289,7 +294,8 @@ var promiseeight =()=>{
         }catch(e){}
       var dummy = {
         img:b.records.page[x].image,
-        price:price
+        price:price,
+description:description
       }
     if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
     earings.push(dummy)
@@ -315,7 +321,7 @@ var promisenine =()=>{
 
       if (check_prize.includes('Price'))
       {
-        price = "$ "+check
+        price = "US $ "+check
       }
       else{
         price = "NA"
@@ -323,7 +329,8 @@ var promisenine =()=>{
         }catch(e){}
       var dummy = {
         img:b.records.page[x].image,
-        price:price
+        price:price,
+description:description
       }
     if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
     dress.push(dummy)
@@ -349,7 +356,7 @@ var promiseten =()=>{
 
       if (check_prize.includes('Price'))
       {
-        price = "$ "+check
+        price = "US $ "+check
       }
       else{
         price = "NA"
@@ -357,7 +364,8 @@ var promiseten =()=>{
         }catch(e){}
       var dummy = {
         img:b.records.page[x].image,
-        price:price
+        price:price,
+description:description
       }
     if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
     necklace.push(dummy)
@@ -382,7 +390,7 @@ return  new Promise((resolve,reject)=>{
 
       if (check_prize.includes('Price'))
       {
-        price = "$ "+check
+        price = "US $ "+check
       }
       else{
         price = "NA"
@@ -390,7 +398,8 @@ return  new Promise((resolve,reject)=>{
         }catch(e){}
       var dummy = {
         img:b.records.page[x].image,
-        price:price
+        price:price,
+description:description
       }
       if(b.records.page[x].image.includes('forever21') &&  !b.records.page[x].image.includes('warning')){
     pants.push(dummy)
@@ -454,6 +463,7 @@ sliderarray.push(
               </div>
               <div className="content-text">
                   <h3 className="title">{tops[rand_nu].price}</h3>
+                    <h4 className="title hidden">{tops[rand_nu].description}</h4>
               </div>
           </div>
       </div>
@@ -464,6 +474,7 @@ sliderarray.push(
               </div>
               <div className="content-text">
                   <h3 className="title">{skirts[rand_nu].price}</h3>
+                  <h4 className="title hidden">{skirts[rand_nu].description}</h4>
               </div>
           </div>
 
@@ -475,6 +486,7 @@ sliderarray.push(
           </div>
           <div className="content-text">
               <h3 className="title">{bags[rand_nu].price}</h3>
+              <h4 className="title hidden">{bags[rand_nu].description}</h4>
           </div>
       </div>
       </div>
@@ -485,6 +497,7 @@ sliderarray.push(
               </div>
               <div className="content-text">
                   <h3 className="title">{shoes[rand_nu].price}</h3>
+                  <h4 className="title hidden">{shoes[rand_nu].description}</h4>
               </div>
           </div>
       </div>
@@ -504,6 +517,8 @@ sliderarray.push(
              </div>
              <div className="content-text">
                  <h3 className="title">{dress[rand_nu].price}</h3>
+                 <h4 className="title hidden">{dress[rand_nu].description}</h4>
+
              </div>
          </div>
 
@@ -516,6 +531,8 @@ sliderarray.push(
              </div>
              <div className="content-text">
                  <h3 className="title">{earings[rand_nu].price}</h3>
+                 <h4 className="title hidden">{earings[rand_nu].description}</h4>
+
              </div>
          </div>
      </div>
@@ -526,6 +543,8 @@ sliderarray.push(
          </div>
          <div className="content-text">
              <h3 className="title">{handbags[rand_nu].price}</h3>
+             <h4 className="title hidden">{handbags[rand_nu].description}</h4>
+
          </div>
      </div>
      </div>
@@ -536,6 +555,8 @@ sliderarray.push(
              </div>
              <div className="content-text">
                  <h3 className="title">{shoes[rand_nu].price}</h3>
+                 <h4 className="title hidden">{shoes[rand_nu].description}</h4>
+
              </div>
          </div>
      </div>
@@ -555,6 +576,8 @@ sliderarray.push(
              </div>
              <div className="content-text">
                  <h3 className="title">{tops[rand_nu].price}</h3>
+                 <h4 className="title hidden">{tops[rand_nu].description}</h4>
+
              </div>
          </div>
      </div>
@@ -565,6 +588,8 @@ sliderarray.push(
              </div>
              <div className="content-text">
                  <h3 className="title">{necklace[rand_nu].price}</h3>
+                 <h4 className="title hidden">{necklace[rand_nu].description}</h4>
+
              </div>
          </div>
 
@@ -576,6 +601,8 @@ sliderarray.push(
              </div>
              <div className="content-text">
                  <h3 className="title">{pants[rand_nu].price}</h3>
+                 <h4 className="title hidden">{pants[rand_nu].description}</h4>
+
              </div>
          </div>
      </div>
@@ -586,6 +613,8 @@ sliderarray.push(
          </div>
          <div className="content-text">
              <h3 className="title">{bags[rand_nu].price}</h3>
+             <h4 className="title hidden">{bags[rand_nu].description}</h4>
+
          </div>
      </div>
      </div>
@@ -606,6 +635,8 @@ sliderarray.push(
               </div>
               <div className="content-text">
                   <h3 className="title">{tops[rand_nu].price}</h3>
+                  <h4 className="title hidden">{tops[rand_nu].description}</h4>
+
               </div>
           </div>
       </div>
@@ -616,6 +647,8 @@ sliderarray.push(
               </div>
               <div className="content-text">
                   <h3 className="title">{shoes[rand_nu].price}</h3>
+                  <h4 className="title hidden">{shoes[rand_nu].description}</h4>
+
               </div>
           </div>
 
@@ -627,6 +660,8 @@ sliderarray.push(
           </div>
           <div className="content-text">
               <h3 className="title">{bags[rand_nu].price}</h3>
+              <h4 className="title hidden">{bags[rand_nu].description}</h4>
+
           </div>
       </div>
       </div>
@@ -637,12 +672,15 @@ sliderarray.push(
               </div>
               <div className="content-text">
                   <h3 className="title">{jeans[rand_nu].price}</h3>
+                  <h4 className="title hidden">{jeans[rand_nu].description}</h4>
+
               </div>
           </div>
       </div>
 
       </div>
 )
+
 
 
 
@@ -672,38 +710,54 @@ $('.your-class').slick({ dots: false, infinite: true, speed: 500, fade: true, au
 
 }
 
-
-
-
-
-
 clickslider = ()=> {
   document.getElementsByClassName('slick-prev')[0].click()
 }
+clickslider1 = ()=> {
+  var  dm
+  var all_slider_images = document.getElementsByClassName('slick-active')[0].getElementsByTagName('img')
+  var all_slider_text = document.getElementsByClassName('slick-active')[0].getElementsByTagName('h3')
+  var all_slider_des = document.getElementsByClassName('slick-active')[0].getElementsByTagName('h4')
+
+  for (var x=0;x<all_slider_images.length;x++)
+  {
+     dm ={
+        img_s:all_slider_images[x].src,
+        text_s :all_slider_text[x].innerText,
+        text_des :all_slider_des[x].innerText
+      }
+      dummyjson.push(dm)
+  }
+
+  document.getElementsByClassName('slick-next')[0].click()
+  this.props.onadditem()
+  Swal.fire('Item added in cart')
 
 
+}
 
 
-   render() {
-     return (
+render() {
+
+   return (
 <div>
 <div className="loader">MATCHING..</div>
 <div className="your-class1">
-    <div className="your-class">
+  <div className="your-class">
     {this.state.sli}
 
-    </div>
+  </div>
 </div>
 <div className="row" class="proceed">
-<NavLink to="/checkout" exact strict >
-    <div className="col-sm-6 col-xs-12 ">
+
+    <div className="col-sm-6 col-xs-12 "  onClick={this.clickslider1}>
         <div className="element-icon style2">
             <div className="icon"><i className="flaticon flaticon-origami28"></i></div>
             <div className="content">
                 <h4 className="title">I like it, Continue</h4></div>
         </div>
     </div>
-    </NavLink>
+
     <div className="col-sm-6 col-xs-12 " onClick={this.clickslider}>
         <div className="element-icon style2">
             <div className="icon"><i className="flaticon flaticon-curvearrows9"></i></div>
@@ -715,4 +769,19 @@ clickslider = ()=> {
 </div>
 </div>);
 
-} } export default work;
+} }
+const mapDispachToProps = (dispatch) => {
+  dispatch({ type: "update_logo",value:'color_logo_class_black'})
+
+return {
+    onadditem: () => dispatch({ type: "add_item",value:dummyjson}),
+
+
+
+  };
+};
+export default connect("",
+
+  mapDispachToProps
+
+)(work);

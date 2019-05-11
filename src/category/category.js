@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import Inputmodel from '../modelinput/modelinput';
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-router-dom';
+import Payment from '../payment/payment';
 
 
 
 class category extends Component {
-  componentDidMount(){
 
-    //document.getElementById('textchange').style.color = "white"
-    console.dir(this.fi)
-    //  this.fi.style.color= "white"
-  }
   render() {
     return (
 
-      <div className="relativecat" ref={(inp)=>{this.fi = inp}} ok={this.props.pathc}>
+      <div className="relativecat" >
       <div className="block-category-carousel">
       <h2 className="title">what's your mood Today ?</h2>
       </div>
@@ -53,5 +50,9 @@ class category extends Component {
   }
 }
 
+const mapDispachToProps = (dispatch) => {
+ dispatch({ type: "update_logo",value:'color_logo_class_white'})
 
-export default category;
+
+};
+export default connect("",mapDispachToProps)(category);

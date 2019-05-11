@@ -22,7 +22,18 @@ FONT-WEIGHT: BOLD;
 FONT-SIZE: 13PX;
 TEXT-ALIGN: CENTER;
 }
+@media only screen and (max-width: 1024px) {
+  .loader {
+    left: 40%;
 
+  }
+}
+@media only screen and (max-width: 767px) {
+  .loader {
+    left: 35%;
+
+  }
+}
 /* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }

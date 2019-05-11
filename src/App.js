@@ -10,22 +10,29 @@ import Weekend from './weekend/weekend';
 import Checkout from './checkout/checkout';
 import Inputmodel from './modelinput/modelinput';
 import Payment from './payment/payment';
-
+import { connect } from "react-redux";
 import $ from "jquery";
 class App extends Component {
-  state={
-    color_t : 'white'
+
+  additem = ()=>{
+
   }
   componentDidMount(){
 
-    document.getElementById('textchange').style.color = "white"
 
   }
+  componentWillMount(){
+
+    }
+
   render() {
+
     return (
+
      <BrowserRouter>
 
       <div>
+
       <div id="box-mobile-menu" className="box-mobile-menu full-height full-width">
       	<div className="box-inner">
       		<span className="close-menu"><span className="icon pe-7s-close"></span></span>
@@ -36,7 +43,7 @@ class App extends Component {
       	<span className="open-header-sidebar"><i className="fa fa-angle-double-right"></i></span>
       	<div className="header-top sidebar-menu">
       		<div className="logo">
-      			<NavLink to="/" exact strict ><div class="logo-sider">JENNY FASHION</div></NavLink>
+      			<NavLink to="/" exact strict ><div class="logo-sider" >JENNY FASHION</div></NavLink>
       		</div>
       		<ul className="boutique-nav main-menu menu-sidebar">
       			<li className="active menu-item-has-children">
@@ -62,7 +69,9 @@ class App extends Component {
       				</div>
       			</form>
       			<div className="mini-cart">
-      				<a className="cart-link" href="#"><span className="icon pe-7s-cart"></span> <span className="count">3</span></a>
+              <NavLink className="cart-link" to="/checkout" exact strict  >
+      				<span className="icon pe-7s-cart"></span> <span className="count">{this.props.count_item}</span>
+              </NavLink>
       			</div>
       			<div className="box-settings">
                       <span className="icon pe-7s-config"></span>
@@ -122,7 +131,7 @@ class App extends Component {
       </header>
       <div id="mian-swtich" className="height-set-width">
 
-        <NavLink to="/" exact strict ><div  id ="textchange" ref={(inp)=>this.textchsange = inp} class="logo-sider-black main-logo">JENNY FASHION</div></NavLink>
+        <NavLink to="/" exact strict ><div    class={this.props.color_logo+ " logo-sider-black main-logo"}>JENNY FASHION</div></NavLink>
 
         <Switch>
 
@@ -135,7 +144,7 @@ class App extends Component {
 
 
 
-             <Category  pathc={this.state.color_t} />
+             <Category   />
 
              </div>
 
@@ -159,5 +168,13 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    count_item: state.count_item,
+      color_logo: state.color_logo_class
+  };
+};
 
-export default App;
+
+
+export default connect(mapStateToProps)(App);

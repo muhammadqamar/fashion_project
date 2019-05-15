@@ -731,7 +731,7 @@ clickslider1 = ()=> {
 
   document.getElementsByClassName('slick-next')[0].click()
   this.props.onadditem()
-  Swal.fire('Item added in cart')
+  //Swal.fire('Item added in cart')
 
 
 }

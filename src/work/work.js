@@ -7,13 +7,34 @@ import { connect } from "react-redux";
 import './work.css';
 import Swal from 'sweetalert2'
 var dummyjson=[]
+var check_button=false
+  var resutl_api
+
+var  user_deatls ={
+ "Browser_CodeName" : navigator.appCodeName,
+ "Browser_Name": navigator.appName,
+ "Browser_Version": navigator.appVersion,
+ "Cookies_Enabled": navigator.cookieEnabled,
+ "Browser_Language": navigator.language,
+ "Browser_Online": navigator.onLine,
+ "Platform": navigator.platform,
+ "User_agent_header": navigator.userAgent,
+ }
+
 class work extends Component {
 state = {
 
     sli:""
   }
+
+componentWillMount(){
+
+  fetch('http://api.ipstack.com/185.46.212.138?access_key=c624d124b963fe4c3369cafee1304184&format=1').then(x=>x.json().then(b=>  resutl_api = b))
+}
 componentDidMount()
   {
+
+
 
 
       document.getElementsByClassName('loader')[0].style.display="block"
@@ -428,7 +449,7 @@ Promise.all([promisefirst(),promisesecond(),promisethird(),promisefour(),promise
 
 //Promise.all([promisefour()]).then(()=>{
 
-    console.log(jeans)
+/*    console.log(jeans)
     console.log(shirts)
 console.log(shoes)
     console.log(bags)
@@ -438,7 +459,7 @@ console.log(handbags)
     console.log(earings)
     console.log(dress)
         console.log(pants)
-        console.log(necklace)
+        console.log(necklace) */
 for(var x=0;x<8;x++){
 //  sliderarray.push(shoes[Math.floor(Math.random()*10)])
 //  sliderarray.push(bags[Math.floor(Math.random()*10)])
@@ -692,10 +713,21 @@ this.setState({
 
 }
 )
-console.log(sliderarray)
-$('.your-class').slick({ dots: false, infinite: true, speed: 500, fade: true, autoplay:false });
+//console.log(sliderarray)
+$('.your-class').slick({ dots: false, infinite: true, speed: 500, fade: true, autoplay:false,
+      });
+document.getElementsByClassName('slick-prev')[0].addEventListener('click',()=>{
+
+
+this.clickslider1("check")
+
+
+//console.log(this)
+})
 
 })
+
+
 
 
 
@@ -711,9 +743,19 @@ $('.your-class').slick({ dots: false, infinite: true, speed: 500, fade: true, au
 }
 
 clickslider = ()=> {
-  document.getElementsByClassName('slick-prev')[0].click()
+  document.getElementsByClassName('slick-next')[0].click()
 }
-clickslider1 = ()=> {
+clickslider1 = (dataa)=> {
+  var user_deatls_all ={
+
+
+"system_options": user_deatls,
+"basic_option":resutl_api
+
+
+}
+console.log(user_deatls_all)
+
   var  dm
   var all_slider_images = document.getElementsByClassName('slick-active')[0].getElementsByTagName('img')
   var all_slider_text = document.getElementsByClassName('slick-active')[0].getElementsByTagName('h3')
@@ -728,13 +770,20 @@ clickslider1 = ()=> {
       }
       dummyjson.push(dm)
   }
-
-  document.getElementsByClassName('slick-next')[0].click()
+if(dataa ==  "check"){
   this.props.onadditem()
+}
+if (dataa != "check")
+{
+
+    this.props.onadditem()
+  document.getElementsByClassName('slick-arrow')[0].click()
+}
   //Swal.fire('Item added in cart')
 
 
 }
+
 
 
 render() {
@@ -748,21 +797,22 @@ render() {
 
   </div>
 </div>
-<div className="row" class="proceed">
+<div className="row" className="proceed">
 
-    <div className="col-sm-6 col-xs-12 "  onClick={this.clickslider1}>
-        <div className="element-icon style2">
-            <div className="icon"><i className="flaticon flaticon-origami28"></i></div>
-            <div className="content">
-                <h4 className="title">I like it, Continue</h4></div>
-        </div>
-    </div>
+
 
     <div className="col-sm-6 col-xs-12 " onClick={this.clickslider}>
         <div className="element-icon style2">
             <div className="icon"><i className="flaticon flaticon-curvearrows9"></i></div>
             <div className="content">
                 <h4 className="title">I dont like it, Continue</h4></div>
+        </div>
+    </div>
+    <div className="col-sm-6 col-xs-12 "  onClick={this.clickslider1}>
+        <div className="element-icon style2">
+            <div className="icon"><i className="flaticon flaticon-origami28"></i></div>
+            <div className="content">
+                <h4 className="title">I like it, Continue</h4></div>
         </div>
     </div>
 

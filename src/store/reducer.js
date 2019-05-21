@@ -11,9 +11,27 @@ const reducer = (state=initialState, action) => {
 
     switch(action.type){
         case 'add_item':
-            newState.count_item += 1
-            newState.checkoutitem=action.value
-            console.log(newState.checkoutitem)
+
+  //alert()
+            var uniqu_img = Array.from(new Set(action.value.map(x=>x.img_s)))
+          //  console.log(uniqu_img)
+            newState.checkoutitem = []
+            for (var x=0;x<uniqu_img.length;x++){
+
+                for (var x1=0;x1<action.value.length;x1++){
+                          if(action.value[x1].img_s == uniqu_img[x] ){
+                            newState.checkoutitem.push(action.value[x1])
+                            break
+                          }
+
+                }
+
+            }
+
+
+
+            newState.count_item =  newState.checkoutitem.length
+          //  console.log(newState.checkoutitem)
             break;
 
         case 'update_logo':

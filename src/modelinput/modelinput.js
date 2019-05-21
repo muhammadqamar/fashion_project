@@ -53,7 +53,7 @@ check:{color_choice:event.target.value}
               <div className="kt-popup-newsletter">
                  <div className="popup-title">
 
-              <div  class="logo-sider-black1 ">JENNY FASHION</div>
+              <div  className="logo-sider-black1 ">JENNY FASHION</div>
                  </div>
                  <form className="form-subscribe">
                      <p className="notice">enter size of   <span className="primary">your top</span></p>
@@ -61,12 +61,14 @@ check:{color_choice:event.target.value}
                  <p className="notice">enter size of   <span className="primary">your paints</span></p>
              <input className="input" value={this.state.paint_size} onChange={this.setpaint.bind(this)}  type="number" />
              <p className="notice">enter size of   <span className="primary">your shoes</span></p>
+
+
          <input className="input"  value={this.state.shoes_size} onChange={this.setshoes.bind(this)} type="number" />
          <p className="notice">select shade of   <span className="primary">your color</span></p>
      <input className="input" value={this.state.color_choice} onChange={this.setcolor.bind(this)}  type="color" />
 
      <NavLink to="/work" exact strict >
-     <div class="element-icon style2"><div class="icon"><i class="flaticon flaticon-origami28"></i></div><div class="content"><h4 class="title">Submit</h4></div></div>
+     <div className="element-icon style2"><div className="icon"><i className="flaticon flaticon-origami28"></i></div><div className="content"><h4 className="title">Submit</h4></div></div>
    </NavLink>
 
 

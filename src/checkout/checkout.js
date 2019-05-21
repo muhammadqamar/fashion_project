@@ -69,17 +69,14 @@ class checkout extends Component {
                                       <td>Shipping</td>
                                       <td>
                                           <label><input name="shipping" type="radio"/>Free Shipping</label>
+
                                           <label>
-                                              <input name="shipping" type="radio"/>Local Delivery
+                                              <input name="shipping" type="radio"/>Flat Rate
                                               <span className="price">$50</span>
                                           </label>
                                           <label>
-                                              <input name="shipping" type="radio"/>Flat Rate
-                                              <span className="price">$100</span>
-                                          </label>
-                                          <label>
                                               <input name="shipping" type="radio"/>International
-                                              <span className="price">£$50</span>
+                                              <span className="price">$100</span>
                                           </label>
                                       </td>
                                   </tr>
@@ -88,10 +85,10 @@ class checkout extends Component {
                                       <td><span className="price">US $ {this.state.totalprice}</span></td>
                                   </tr>
                               </tbody></table>
-                              <NavLink to="/payment" exact strict >
+
                               <button className="button btn-primary medium checkout-button">PROCEED TO CHECKOUT</button>
 
-                                  </NavLink>
+                            
                             </div>
                       </div>
 

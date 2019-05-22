@@ -29,7 +29,7 @@ state = {
 
 componentWillMount(){
 
-  fetch('http://api.ipstack.com/185.46.212.138?access_key=c624d124b963fe4c3369cafee1304184&format=1').then(x=>x.json().then(b=>  resutl_api = b))
+  fetch('https://api.ipgeolocation.io/ipgeo?apiKey=1a8260d6d26d48c6bded145efcfe7ced').then(x=>x.json().then(b=>  resutl_api = b))
 }
 componentDidMount()
   {

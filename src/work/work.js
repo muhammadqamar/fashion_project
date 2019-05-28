@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-r
 import { connect } from "react-redux";
 import './work.css';
 import Swal from 'sweetalert2'
+//import {client} from '../elastic'
+
 var dummyjson=[]
 var check_button=false
   var resutl_api
@@ -20,13 +22,11 @@ var  user_deatls ={
  "Platform": navigator.platform,
  "User_agent_header": navigator.userAgent,
  }
-
 class work extends Component {
 state = {
 
     sli:""
   }
-
 componentWillMount(){
 
   fetch('https://api.ipgeolocation.io/ipgeo?apiKey=1a8260d6d26d48c6bded145efcfe7ced').then(x=>x.json().then(b=>  resutl_api = b))
@@ -741,7 +741,6 @@ this.clickslider1("check")
 
 
 }
-
 clickslider = ()=> {
   document.getElementsByClassName('slick-next')[0].click()
 }
@@ -783,9 +782,6 @@ if (dataa != "check")
 
 
 }
-
-
-
 render() {
 
    return (

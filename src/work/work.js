@@ -6,12 +6,10 @@ import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-r
 import { connect } from "react-redux";
 import './work.css';
 import Swal from 'sweetalert2'
-//import {client} from '../elastic'
-
+import client from '../elastic'
 var dummyjson=[]
 var check_button=false
-  var resutl_api
-
+var resutl_api
 var  user_deatls ={
  "Browser_CodeName" : navigator.appCodeName,
  "Browser_Name": navigator.appName,
@@ -28,7 +26,27 @@ state = {
     sli:""
   }
 componentWillMount(){
-
+/*  client.search({
+    index: 'test2',
+    type: 'posts',
+    body: {
+      query: {
+        match_all: {}
+      },
+    }
+  },function (error, response,status) {
+      if (error){
+        console.log("search error: "+error)
+      }
+      else {
+        console.log("--- Response ---");
+        console.log(response);
+        console.log("--- Hits ---");
+        response.hits.hits.forEach(function(hit){
+          console.log(hit);
+        })
+      }
+  });*/
   fetch('https://api.ipgeolocation.io/ipgeo?apiKey=1a8260d6d26d48c6bded145efcfe7ced').then(x=>x.json().then(b=>  resutl_api = b))
 }
 componentDidMount()
@@ -725,6 +743,21 @@ this.clickslider1("check")
 //console.log(this)
 })
 
+
+var all_data_array = shoes.concat(jeans).concat(jeans).concat(bags).concat(shirts).concat(pants).concat(skirts).concat(handbags).concat(earings).concat(dress).concat(necklace)
+
+all_data_array.map(x=>{
+
+  client.index({
+      index: 'test2',
+      type: 'posts',
+      body: x
+  }, function(err, resp, status) {
+      console.log(resp);
+  });
+
+
+})
 })
 
 

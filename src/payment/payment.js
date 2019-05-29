@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, NavLink, Redirect, Prompt} from 'react-router-dom';
 import { connect } from "react-redux";
-import Client from '../elastic'
-
 class payment extends Component {
   componentDidMount(){
 

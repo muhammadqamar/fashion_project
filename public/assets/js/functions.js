@@ -413,7 +413,7 @@
         //MENU REPONSIIVE
         init_menu_reposive();
         //SELECT CHOSEN
-        $("select").chosen();
+      
         // Resize Megamenu
         boutique_resizeMegamenu();
 

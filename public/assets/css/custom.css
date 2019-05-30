@@ -286,6 +286,14 @@ height:100px
 
 
 }
+.dropup{
+  float:right
+}
+.dropup .btn{
+background:#b28b46;
+color:#fff
+}
+
 .logo-sider-black{
   color:#333;
   font-size:26px;
@@ -311,4 +319,8 @@ td.product-description{
 }
 .color_logo_class_black {
   color:black
+}
+.custom-len{
+  width:100px;
+  float:right
 }

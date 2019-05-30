@@ -10,6 +10,9 @@ import client from '../elastic'
 var dummyjson=[]
 var check_button=false
 var resutl_api
+var input_age
+var input_profession
+var all_search_result_api =[]
 var  user_deatls ={
  "Browser_CodeName" : navigator.appCodeName,
  "Browser_Name": navigator.appName,
@@ -26,32 +29,13 @@ state = {
     sli:""
   }
 componentWillMount(){
-/*  client.search({
-    index: 'test2',
-    type: 'posts',
-    body: {
-      query: {
-        match_all: {}
-      },
-    }
-  },function (error, response,status) {
-      if (error){
-        console.log("search error: "+error)
-      }
-      else {
-        console.log("--- Response ---");
-        console.log(response);
-        console.log("--- Hits ---");
-        response.hits.hits.forEach(function(hit){
-          console.log(hit);
-        })
-      }
-  });*/
+
   fetch('https://api.ipgeolocation.io/ipgeo?apiKey=1a8260d6d26d48c6bded145efcfe7ced').then(x=>x.json().then(b=>  resutl_api = b))
 }
 componentDidMount()
   {
-
+input_profession = this.props.all_t.profession_
+input_age = this.props.all_t.age_
 
 
 
@@ -724,7 +708,7 @@ sliderarray.push(
 
 
 }
-document.getElementsByClassName('loader')[0].style.display="none"
+
 this.setState({
 
     sli:sliderarray
@@ -734,30 +718,61 @@ this.setState({
 //console.log(sliderarray)
 $('.your-class').slick({ dots: false, infinite: true, speed: 500, fade: true, autoplay:false,
       });
-document.getElementsByClassName('slick-prev')[0].addEventListener('click',()=>{
+//document.getElementsByClassName('slick-prev')[0].addEventListener('click',()=>{
 
 
-this.clickslider1("check")
+//this.clickslider1("check")
 
 
 //console.log(this)
+//})
+
+
+var all_data_array = shoes.concat(shoes).concat(jeans).concat(bags).concat(shirts).concat(pants).concat(skirts).concat(handbags).concat(earings).concat(dress).concat(necklace).concat(tops)
+var add_promise =  new Promise((res,rej)=>{
+  all_data_array.map(x=>{
+
+    client.index({
+        index: 'test8',
+        type: 'posts',
+        body: x
+    }, function(err, resp, status) {
+     console.log('adding');
+    });
+
+
+  })
+  res()
+  document.getElementsByClassName('loader')[0].style.display="none"
+})
+add_promise.then(xj=>{
+  client.search({
+     index: 'test8',
+     type: 'posts',
+     body: {
+       from : 0, "size" : 10000,
+       query: {
+         match_all: {}
+       },
+     }
+   },function (error, response,status) {
+       if (error){
+         console.log("search error: "+error)
+       }
+       else {
+         console.log("--- Response ---");
+         console.log(response);
+         console.log("--- Hits ---");
+         response.hits.hits.forEach(function(hit){
+         all_search_result_api.push(hit)
+         })
+       }
+   });
+
 })
 
 
-var all_data_array = shoes.concat(jeans).concat(jeans).concat(bags).concat(shirts).concat(pants).concat(skirts).concat(handbags).concat(earings).concat(dress).concat(necklace)
 
-all_data_array.map(x=>{
-
-  client.index({
-      index: 'test2',
-      type: 'posts',
-      body: x
-  }, function(err, resp, status) {
-      console.log(resp);
-  });
-
-
-})
 })
 
 
@@ -775,10 +790,93 @@ all_data_array.map(x=>{
 
 }
 clickslider = ()=> {
-  document.getElementsByClassName('slick-next')[0].click()
+
+
+
+   var user_deatls_all =
+   {
+
+
+ "system_options": user_deatls,
+ "basic_option":resutl_api
+
+
+ }
+
+
+   var  dm
+
+   var elastic_cat
+   var elastic_cat_sum=""
+   var elastic_prod_four =[]
+   var all_slider_images = document.getElementsByClassName('slick-active')[0].getElementsByTagName('img')
+   var all_slider_text = document.getElementsByClassName('slick-active')[0].getElementsByTagName('h3')
+   var all_slider_des = document.getElementsByClassName('slick-active')[0].getElementsByTagName('h4')
+
+   for (var x=0;x<all_slider_images.length;x++)
+   {
+     var check_one = true
+
+      try{
+       elastic_cat = all_slider_des[x].innerText.split("Category:")[1].split(", Price")[0]
+       //alert(elastic_cat)
+     }catch(e){
+      elastic_cat="NA"
+
+     }
+     elastic_cat_sum = elastic_cat +"|"+elastic_cat_sum
+
+     var _idd = all_search_result_api.map(c=>{
+
+       if(c._source.img ==all_slider_images[x].src){
+
+          if(check_one){
+            check_one=false
+         elastic_prod_four.push({
+           'productID':c._id,
+           'text':elastic_cat,
+
+         })
+       }
+
+
+       }
+
+     })
+
+   }
+
+   client.index({
+        index: 'dislikedprodtest8',
+        type: 'posts',
+        body: {
+            "outfit-type":elastic_cat_sum,
+            "outfit": elastic_prod_four,
+            "ip":resutl_api.ip,
+            "user_Agent":user_deatls.Platform,
+            "age":input_age,
+            "profession":input_profession,
+             "sessionID":resutl_api.ip + " " + user_deatls.Browser_Name
+        }
+    }, function(err, resp, status) {
+
+    });
+
+
+
+
+
+
+     this.props.onadditem()
+   document.getElementsByClassName('slick-arrow')[0].click()
+
+
+
 }
-clickslider1 = (dataa)=> {
-  var user_deatls_all ={
+clickslider1 = (dataa)=>
+ {
+  var user_deatls_all =
+  {
 
 
 "system_options": user_deatls,
@@ -786,31 +884,77 @@ clickslider1 = (dataa)=> {
 
 
 }
-console.log(user_deatls_all)
+
 
   var  dm
+
+  var elastic_cat
+  var elastic_cat_sum=""
+  var elastic_prod_four =[]
   var all_slider_images = document.getElementsByClassName('slick-active')[0].getElementsByTagName('img')
   var all_slider_text = document.getElementsByClassName('slick-active')[0].getElementsByTagName('h3')
   var all_slider_des = document.getElementsByClassName('slick-active')[0].getElementsByTagName('h4')
 
   for (var x=0;x<all_slider_images.length;x++)
   {
+      var check_one = true
      dm ={
         img_s:all_slider_images[x].src,
         text_s :all_slider_text[x].innerText,
         text_des :all_slider_des[x].innerText
       }
       dummyjson.push(dm)
+     try{
+      elastic_cat = all_slider_des[x].innerText.split("Category:")[1].split(", Price")[0]
+      //alert(elastic_cat)
+    }catch(e){
+     elastic_cat="NA"
+
+    }
+    elastic_cat_sum = elastic_cat +"|"+elastic_cat_sum
+
+    var _idd = all_search_result_api.map(c=>{
+
+      if(c._source.img ==all_slider_images[x].src){
+
+         if(check_one){
+           check_one=false
+        elastic_prod_four.push({
+          'productID':c._id,
+          'text':elastic_cat,
+
+        })
+      }
+
+
+      }
+
+    })
+
   }
-if(dataa ==  "check"){
-  this.props.onadditem()
-}
-if (dataa != "check")
-{
+
+  client.index({
+       index: 'likedprodtest8',
+       type: 'posts',
+       body: {
+           "outfit-type":elastic_cat_sum,
+           "outfit": elastic_prod_four,
+           "ip":resutl_api.ip,
+           "user_Agent":user_deatls.Platform,
+           "age":input_age,
+           "profession":input_profession,
+           "sessionID":resutl_api.ip + " " + user_deatls.Browser_Name
+       }
+   }, function(err, resp, status) {
+
+   });
+
+
+
 
     this.props.onadditem()
   document.getElementsByClassName('slick-arrow')[0].click()
-}
+
   //Swal.fire('Item added in cart')
 
 
@@ -849,6 +993,12 @@ render() {
 </div>);
 
 } }
+
+const mapStateToProps = state => {
+  return {
+    all_t: state.form_input_data
+  };
+};
 const mapDispachToProps = (dispatch) => {
   dispatch({ type: "update_logo",value:'color_logo_class_black'})
 
@@ -859,7 +1009,7 @@ return {
 
   };
 };
-export default connect("",
+export default connect(mapStateToProps,
 
   mapDispachToProps
 

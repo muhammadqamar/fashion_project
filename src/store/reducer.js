@@ -3,7 +3,8 @@
 const initialState = {
     count_item:0,
     checkoutitem :[],
-    color_logo_class:"color_logo_class_white"
+    color_logo_class:"color_logo_class_white",
+    form_input_data:[]
 };
 
 const reducer = (state=initialState, action) => {
@@ -37,6 +38,12 @@ const reducer = (state=initialState, action) => {
         case 'update_logo':
             newState.color_logo_class= action.value;
             break;
+        case 'update_form':
+
+            newState.form_input_data= action.value;
+            console.log(action.value)
+            break;
+
     }
     return newState;
 };

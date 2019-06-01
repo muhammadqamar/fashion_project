@@ -43,7 +43,7 @@ class App extends Component {
       	<span className="open-header-sidebar"><i className="fa fa-angle-double-right"></i></span>
       	<div className="header-top sidebar-menu">
       		<div className="logo">
-      			<NavLink to="/" exact strict ><div class="logo-sider" >JENNY FASHION</div></NavLink>
+      			<NavLink to="/" exact strict ><div className="logo-sider" >JENNY FASHION</div></NavLink>
       		</div>
       		<ul className="boutique-nav main-menu menu-sidebar">
       			<li className="active menu-item-has-children">
@@ -131,7 +131,7 @@ class App extends Component {
       </header>
       <div id="mian-swtich" className="height-set-width">
 
-        <NavLink to="/" exact strict ><div    class={this.props.color_logo+ " logo-sider-black main-logo"}>JENNY FASHION</div></NavLink>
+        <NavLink to="/" exact strict ><div    className={this.props.color_logo+ " logo-sider-black main-logo"}>JENNY FASHION</div></NavLink>
 
         <Switch>
 

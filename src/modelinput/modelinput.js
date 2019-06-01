@@ -148,11 +148,10 @@ addformreducer = ()=> {
 
 
          <input className="input"  value={this.state.check.shoes_size} onChange={this.setshoes.bind(this)} type="number" />
-         <p className="notice">select shade of   <span className="primary">your color</span></p>
-     <input className="input" value={this.state.check.color_choice} onChange={this.setcolor.bind(this)}  type="color" />
+
      <p className="notice">Select Range of    <span className="primary">your age</span></p>
-<div class="form-group custom-len">
-     <select class="form-control" onChange={this.setage.bind(this)} >
+<div className="form-group custom-len">
+     <select className="form-control" onChange={this.setage.bind(this)} >
       <option>10-15</option>
         <option>15-20</option>
           <option>20-25</option>
@@ -165,13 +164,13 @@ addformreducer = ()=> {
     </select>
 </div>
       <p className="notice">Select    <span className="primary">your profession</span></p>
-      <div class="form-group custom-len">
-           <select class="form-control" onChange={this.setprofession.bind(this)} >
+      <div className="form-group custom-len">
+           <select className="form-control" onChange={this.setprofession.bind(this)} >
             <option>Student</option>
               <option>Engineer</option>
                 <option> Medical</option>
               <option>Legal</option>
-                <option>Government</option>
+
           <option>Labor</option>
                 <option>Freelancer</option>
 

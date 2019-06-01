@@ -885,7 +885,7 @@ clickslider = ()=> {
      var check_one = true
 
 
-     elastic_cat_sum = all_slider_type[x].innerText +"|"+all_slider_type
+     elastic_cat_sum = all_slider_type[x].innerText +"|"+elastic_cat_sum
      try{
       elastic_cat = all_slider_des[x].innerText.split("Name:")[1].split(", Category")[0]
       //alert(elastic_cat)

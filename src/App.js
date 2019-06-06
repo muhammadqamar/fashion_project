@@ -12,6 +12,7 @@ import Inputmodel from './modelinput/modelinput';
 import Payment from './payment/payment';
 import { connect } from "react-redux";
 import $ from "jquery";
+
 class App extends Component {
 
   additem = ()=>{
@@ -22,6 +23,8 @@ class App extends Component {
 
   }
   componentWillMount(){
+
+
 
     }
 

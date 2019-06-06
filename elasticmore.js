@@ -43,7 +43,7 @@ resultfour.push(hit)
 }
 
 )
-var port = process.env.PORT  ||5555
+var port = 5555
 app.get('/results', function (req, res) {
 
  res.send(resultfour)
